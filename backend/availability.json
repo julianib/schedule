@@ -1,0 +1,122 @@
+[
+    {
+        "name": "user0",
+        "available": {
+            "mon": 2,
+            "tue": 2,
+            "wed": 2,
+            "thu": 0,
+            "fri": 2,
+            "sat": 2,
+            "sun": 1
+        }
+    },
+    {
+        "name": "user1",
+        "available": {
+            "mon": 1,
+            "tue": 0,
+            "wed": 2,
+            "thu": 0,
+            "fri": 0,
+            "sat": 2,
+            "sun": 1
+        }
+    },
+    {
+        "name": "user2",
+        "available": {
+            "mon": 1,
+            "tue": 1,
+            "wed": 0,
+            "thu": 1,
+            "fri": 1,
+            "sat": 1,
+            "sun": 0
+        }
+    },
+    {
+        "name": "user3",
+        "available": {
+            "mon": 1,
+            "tue": 2,
+            "wed": 2,
+            "thu": 1,
+            "fri": 0,
+            "sat": 2,
+            "sun": 2
+        }
+    },
+    {
+        "name": "user4",
+        "available": {
+            "mon": 1,
+            "tue": 0,
+            "wed": 2,
+            "thu": 0,
+            "fri": 2,
+            "sat": 2,
+            "sun": 2
+        }
+    },
+    {
+        "name": "user5",
+        "available": {
+            "mon": 1,
+            "tue": 1,
+            "wed": 0,
+            "thu": 1,
+            "fri": 2,
+            "sat": 1,
+            "sun": 0
+        }
+    },
+    {
+        "name": "user6",
+        "available": {
+            "mon": 0,
+            "tue": 0,
+            "wed": 1,
+            "thu": 1,
+            "fri": 0,
+            "sat": 0,
+            "sun": 1
+        }
+    },
+    {
+        "name": "user7",
+        "available": {
+            "mon": 2,
+            "tue": 2,
+            "wed": 1,
+            "thu": 2,
+            "fri": 0,
+            "sat": 2,
+            "sun": 2
+        }
+    },
+    {
+        "name": "user8",
+        "available": {
+            "mon": 2,
+            "tue": 0,
+            "wed": 2,
+            "thu": 1,
+            "fri": 2,
+            "sat": 0,
+            "sun": 2
+        }
+    },
+    {
+        "name": "user9",
+        "available": {
+            "mon": 2,
+            "tue": 0,
+            "wed": 2,
+            "thu": 0,
+            "fri": 2,
+            "sat": 1,
+            "sun": 0
+        }
+    }
+]
