@@ -54,10 +54,10 @@ def main():
                     f"{day_id}_{shift_id}_{worker_id}"
                 )
 
-    n_worker_shifts_required = 0  # takes into account workers_min > 1 for shifts
+    n_worker_shifts_required = 0  # takes into account workers_required > 1 for shifts
     for day in days:
         for shift in day["shifts"]:
-            n_worker_shifts_required += shift["workers_min"]
+            n_worker_shifts_required += shift["workers_required"]
     print(f"Worker shifts required: {n_worker_shifts_required}")
 
     # add constraint: minimum workers of each shift
@@ -65,11 +65,11 @@ def main():
         day_id = day["id"]
         for shift in day["shifts"]:
             shift_id = shift["id"]
-            workers_min = shift["workers_min"]
+            workers_required = shift["workers_required"]
             model.Add(
                 sum(
                     final_schedule[(day_id, shift_id, worker["id"])] for worker in workers
-                ) == workers_min  # todo '>=' if workers need to work a minimum amount of shifts
+                ) == workers_required  # todo '>=' if workers need to work a minimum amount of shifts
             )
 
     # add constraint: each worker works at most once per day
@@ -94,6 +94,8 @@ def main():
         shifts_per_worker_max = shifts_per_worker_min + 1
 
     print(f"Shifts per worker: min: {shifts_per_worker_min}, max: {shifts_per_worker_max}")
+
+    # todo constraint: worker can only be on one LOCATION
 
     # add constraint: take into account shifts per worker min and max amounts
     for worker in workers:
@@ -121,7 +123,9 @@ def main():
 
     # solve!
     solver = cp_model.CpSolver()
+    print("Solving model...")
     solver.Solve(model)
+    print("Solved model")
     satisfaction = 0  # if worker gets a shift with preference 10/10, satisfaction increases with 1
     print()
     for day in days:
@@ -129,17 +133,15 @@ def main():
         print(f"Day {day_id}")
         for shift in day["shifts"]:
             shift_id = shift["id"]
-            print(f"Shift {shift['id']}, workers min: {shift['workers_min']}")
+            print(f"Shift {shift['id']}, workers min: {shift['workers_required']}")
             for worker in workers:
                 worker_id = worker["id"]
-                # print(f"shift {shift_id} worker {worker_id} {solver.Value(shift_schedule[(shift_id, worker_id)])}")
                 if solver.Value(final_schedule[(day_id, shift_id, worker_id)]) == 1:
                     satisfaction += shift["preferences"][worker_id] / 10
                     print(f"\t- Worker {worker_id} assigned, "
                           f"solver value: {solver.Value(final_schedule[(day_id, shift_id, worker_id)])}, "
                           f"preference: {shift['preferences'][worker_id]}")
-
-        print()
+            print()
 
     print("Stats")
     print(f"\t- Solver value: {solver.ObjectiveValue()} (theoretical max: {n_worker_shifts_required * 10})")
