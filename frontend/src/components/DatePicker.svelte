@@ -1,13 +1,4 @@
 <script>
-    import { createEventDispatcher } from "svelte";
-
-    export let date;
-
-    const dispatch = createEventDispatcher();
-
-    const removeShift = () => {
-        dispatch("removeshift", date);
-    }
 </script>
 
 <div>
@@ -24,6 +15,4 @@
 
     <label for="workers"># workers</label>
     <input name="workers" type="number" min="1" max="100" />
-    
-    <button on:click={removeShift}>X</button>
 </div>
