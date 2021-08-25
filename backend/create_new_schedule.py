@@ -38,12 +38,16 @@ shifts = get_all_shifts(start_date, end_date, [
 print(shifts)
 
 schedule = {
-    "name": None,
-    "author": None,
-    "created": None,
+    "workers": [
+        {
+            "id": i,
+            "name": f"Worker #{i}"
+        } for i in range(10)
+    ],
+    "name": "schedule name here",
     "shifts": [
         {
-            "workers_minimum": 2,
+            "workers_minimum": random.choice([1, 2]),
             "start": s[0].strftime("%c"),
             "end": s[1].strftime("%c"),
             "availabilities": []
@@ -52,19 +56,10 @@ schedule = {
 }
 
 
-workers = []
-for i in range(5):
-    worker = {
-        "name": f"Worker {i}",
-        "email": f"worker{i}@gmail.com",
-        "id": i
-    }
-    workers.append(worker)
-
-for worker in workers:
-    for i, shift in enumerate(schedule["shifts"]):
+for shift_index, shift in enumerate(schedule["shifts"]):
+    for worker in schedule["workers"]:
         availability = random.choice([0, 5, 10])
-        schedule["shifts"][i]["availabilities"].append(
+        schedule["shifts"][shift_index]["availabilities"].append(
             {
                 "id": worker["id"],
                 "availability": availability
@@ -76,4 +71,4 @@ with open("schedules.json", "r") as f:
 
 with open("schedules.json", "w") as f:
     data["schedules"] = [schedule]  # .append(schedule)
-    json.dump(data, f, indent=4)
+    json.dump(data, f, indent=4, sort_keys=True)
