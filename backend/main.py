@@ -21,3 +21,9 @@ for i in range(10):
 with open("availability.json", "w") as f:
     json.dump(users, f, indent=4)
 
+
+def generate():
+    pass
+
+
+generate()
