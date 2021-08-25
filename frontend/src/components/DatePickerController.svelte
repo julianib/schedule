@@ -1,11 +1,10 @@
 <script>
     import DatePicker from "./DatePicker.svelte";
 
-    let dates = [new Date()]
+    let dates = [new Date().getTime()]
 
     const addDate = () => {
-        const newDate = new Date();
-        dates = [...dates, newDate];
+        dates = [...dates, new Date().getTime()];
     }
 
     const removeShift = (event) => {
@@ -13,12 +12,14 @@
     }
 
     const sendDate = () => {
-        
+        fetch("http://localhost:3000/send_schedule", {
+            method: "POST",
+            body: dates
+        })
     }
 </script>
 
 <div>
-
     {#each dates as date}
         <DatePicker {date} on:removeshift={removeShift}/>
     {/each}
