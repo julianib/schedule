@@ -1,12 +1,8 @@
 import { useState } from "react";
 
 export default function Day() {
-    const [ date, setDate ] = useState();
-    const [ shifts, setShifts ] = useState([]);
+  const [date, setDate] = useState();
+  const [shifts, setShifts] = useState([]);
 
-    return (
-        <div>
-            day
-        </div>
-    )
+  return <div>day</div>;
 }

@@ -1,14 +1,9 @@
 import { useState } from "react";
 
 export default function CreateSchedule() {
+  const [days, setDays] = useState([]);
 
-    const [ days, setDays ] = useState([]);
+  function addDay() {}
 
-    function addDay() {
-        
-    }
-
-    return (
-        <button onClick={addDay}>+ DAY</button>
-    )
+  return <button onClick={addDay}>+ DAY</button>;
 }
