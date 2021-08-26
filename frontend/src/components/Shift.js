@@ -7,13 +7,13 @@ export default function Shift({shift, updateShift}) {
 
     const handleStartTime = (event) => {
         setStartTime(event.target.value);
-        updateShift(shift.id, "startTime", startTime);
+        updateShift(shift.id, "startTime", event.target.value);
         
     }
 
     const handleEndTime = (event) => {
         setEndTime(event.target.value);
-        updateShift(shift.id, "endTime", endTime);
+        updateShift(shift.id, "endTime", event.target.value);
     }
 
     const handleWorkers = (event) => {
@@ -26,17 +26,13 @@ export default function Shift({shift, updateShift}) {
             <h2>
                 Shift
             </h2>
-            <input type="number" min="0" max="23" value={startTime} onChange={handleStartTime}/>
-            <input type="number" min="0" max="23" />
+            <input type="text" value={startTime} onChange={handleStartTime}/>
 
-            <input type="number" min="0" max="23" value={endTime} onChange={handleEndTime}/>
-            <input type="number" min="0" max="23" />
-
+            <input type="text" value={endTime} onChange={handleEndTime}/>
             <h2>
                 Workers
             </h2>
             <input type="number" min="1" max="99" value={workers} onChange={handleWorkers}/>
         </div>
     )
-
 }
