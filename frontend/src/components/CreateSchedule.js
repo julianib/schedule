@@ -7,6 +7,7 @@ export default function CreateSchedule() {
 
     function addDay() {
         const newDay = {
+            id: days.length,
             date: new Date().getTime(),
             shifts: []
         }
