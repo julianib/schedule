@@ -55,13 +55,13 @@ export default function Day({day, updateDay}) {
             <h2>Day</h2>
             <input type="date" onChange={updateDate} />
             <br />
-            <button onClick={addShift}>+ SHIFT</button>
             
             <div>
                 {shifts.map((shift, index) => (
                     <Shift key={index} shift={shift} updateShift={updateShift}/>
-                ))}
+                    ))}
             </div>
+            <button onClick={addShift}>+ SHIFT</button>
             
         </div>
     )
