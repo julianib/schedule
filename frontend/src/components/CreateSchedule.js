@@ -20,7 +20,6 @@ export default function CreateSchedule() {
     function updateDay(updatedDay) {
         const updatedDays = days.filter(day => updatedDay.id !== day.id)
         setDays([...updatedDays, updatedDay]);
-        console.log(days);
     }
 
     return (
