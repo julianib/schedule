@@ -12,6 +12,7 @@ days: [
             {
                 start: time
                 end: time
+                workers: int
                 preferences: []
             }
         ]
@@ -40,7 +41,7 @@ def get_all_days_and_shifts(first_day, last_day, shift_times: List[tuple]) -> Li
                 "id": f"s-{shift_i}",
                 "start": shift_time[0].strftime("%X"),
                 "end": shift_time[1].strftime("%X"),
-                "workers_min": random.choice([1, 2]),
+                "workers_required": random.choice([1, 2]),
                 "preferences": {}
             })
             # all_shifts.append((dt.datetime.combine(day, shift_time[0]), dt.datetime.combine(day, shift_time[1])))
@@ -52,17 +53,21 @@ def get_all_days_and_shifts(first_day, last_day, shift_times: List[tuple]) -> Li
 
 def main():
     start_date = dt.date(2000, 1, 1)
-    end_date = dt.date(2000, 1, 5)
+    end_date = dt.date(2000, 1, 30)
 
     start_time_1 = dt.time(15, 0)
     end_time_1 = dt.time(19, 0)
 
-    start_time_2 = dt.time(17, 0)
-    end_time_2 = dt.time(21, 0)
+    start_time_2 = dt.time(16, 0)
+    end_time_2 = dt.time(20, 0)
+
+    start_time_3 = dt.time(17, 0)
+    end_time_3 = dt.time(21, 0)
 
     days = get_all_days_and_shifts(start_date, end_date, [
         (start_time_1, end_time_1),
-        (start_time_2, end_time_2)
+        (start_time_2, end_time_2),
+        (start_time_3, end_time_3)
     ])
 
     schedule = {
@@ -71,7 +76,7 @@ def main():
             {
                 "id": f"w-{i}",
                 "name": f"Worker #{i}"
-            } for i in range(10)
+            } for i in range(90)
         ],
         "days": days
     }

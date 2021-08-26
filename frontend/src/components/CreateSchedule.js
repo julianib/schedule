@@ -3,6 +3,7 @@ import { useState } from "react";
 import Day from "./Day";
 
 export default function CreateSchedule() {
+  const [days, setDays] = useState([]);
 
     const [days, setDays] = useState([]);
 
