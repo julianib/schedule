@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Shift from "./Shift";
 
-export default function Day() {
+export default function Day({day, updateDay}) {
     const [date, setDate] = useState();
     const [shifts, setShifts] = useState([]);
 
@@ -13,6 +13,7 @@ export default function Day() {
 
     const addShift = () => {
         const newShift = {
+            id: shifts.length,
             startTime: 0,
             endTime: 0,
             workers: 1,
@@ -21,8 +22,21 @@ export default function Day() {
         setShifts([...shifts, newShift]);
     }
 
+    const saveDay = () => {
+        const newDay = {
+            id: day.id,
+            date,
+            shifts
+        }
+
+        updateDay(newDay);
+    }
+
     return (
         <div style={{ backgroundColor: "green" }}>
+            <button style={{ display: "inline", float: "right" }} onClick={saveDay}>
+                Save
+            </button>
             <h2>Day</h2>
             <input type="date" onChange={updateDate} />
             <br />
@@ -33,7 +47,7 @@ export default function Day() {
                     <Shift key={index} shift={shift}/>
                 ))}
             </div>
-
+            
         </div>
     )
 }

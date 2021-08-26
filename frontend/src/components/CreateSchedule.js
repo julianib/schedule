@@ -15,11 +15,19 @@ export default function CreateSchedule() {
         setDays([...days, newDay]);
     }
 
+    // This function is passed to the Day component
+    // It will be called when `save` is pressed on a day component
+    function updateDay(updatedDay) {
+        const updatedDays = days.filter(day => updatedDay.id !== day.id)
+        setDays([...updatedDays, updatedDay]);
+        console.log(days);
+    }
+
     return (
         <>
             <div>
                 {days.map((day, index) => (
-                    <Day key={index} day={day}/>
+                    <Day key={index} day={day} updateDay={updateDay}/>
                 ))}
             </div>
             <button onClick={addDay}>+ DAY</button>
