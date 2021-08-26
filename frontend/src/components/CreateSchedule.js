@@ -22,6 +22,13 @@ export default function CreateSchedule() {
         setDays([...updatedDays, updatedDay]);
     }
 
+    function sendDays() {
+        fetch("http://localhost:5000/sendDays", {
+            method: "POST",
+            body: JSON.stringify(days)
+        });
+    }
+
     return (
         <>
             <div>
@@ -30,6 +37,7 @@ export default function CreateSchedule() {
                 ))}
             </div>
             <button onClick={addDay}>+ DAY</button>
+            <button onClick={sendDays}>Send days</button>
         </>
     )
 }

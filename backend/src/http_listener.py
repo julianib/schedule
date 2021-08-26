@@ -16,9 +16,9 @@ if the host wants to edit the schedule later (add more days, shifts or worker na
 """
 
 
-@app.route('/send_schedule', methods=["POST"])
-async def get_schedule(request):
-    print(request.body.decode("utf-8").split(','))
+@app.route('/sendDays', methods=["POST"])
+async def send_days(request):
+    print(request.body)
 
 """
 create_schedule packet:
