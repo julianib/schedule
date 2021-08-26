@@ -18,7 +18,7 @@ export default function Shift({shift}) {
     }
 
     return (
-        <>
+        <div style={{ backgroundColor: "teal" }}>
             <h2>
                 Shift
             </h2>
@@ -32,7 +32,7 @@ export default function Shift({shift}) {
                 Workers
             </h2>
             <input type="number" min="1" max="99" value={workers} onChange={handleWorkers}/>
-        </>
+        </div>
     )
 
 }
