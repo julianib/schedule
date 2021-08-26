@@ -32,6 +32,21 @@ export default function Day({day, updateDay}) {
         updateDay(newDay);
     }
 
+    // This function will get called everytime a shift is updated on a day
+    // (yes, I know, it's bad but this works @todo)
+    function updateShift(updatedShiftId, key, value) {
+        // First find the shift to update by its id
+        const shiftToUpdateIndex = shifts.findIndex(shift => shift.id === updatedShiftId);
+
+        // Get filter to update
+        const shiftToUpdate = shifts[shiftToUpdateIndex];
+        shiftToUpdate[key] = value;
+
+        // Then filter old shift from current shifts and then update with updated shift (shiftToUpdate)
+        const shiftsToUpdate = shifts.filter(shift => shift.id !== updatedShiftId);
+        setShifts([...shiftsToUpdate, shiftToUpdate]);
+    }
+
     return (
         <div style={{ backgroundColor: "green" }}>
             <button style={{ display: "inline", float: "right" }} onClick={saveDay}>
@@ -44,7 +59,7 @@ export default function Day({day, updateDay}) {
             
             <div>
                 {shifts.map((shift, index) => (
-                    <Shift key={index} shift={shift}/>
+                    <Shift key={index} shift={shift} updateShift={updateShift}/>
                 ))}
             </div>
             

@@ -1,20 +1,24 @@
 import { useState } from "react";
 
-export default function Shift({shift}) {
+export default function Shift({shift, updateShift}) {
     const [startTime, setStartTime] = useState(0);
     const [endTime, setEndTime] = useState(0);
     const [workers, setWorkers] = useState(1);
 
     const handleStartTime = (event) => {
         setStartTime(event.target.value);
+        updateShift(shift.id, "startTime", startTime);
+        
     }
 
     const handleEndTime = (event) => {
         setEndTime(event.target.value);
+        updateShift(shift.id, "endTime", endTime);
     }
 
     const handleWorkers = (event) => {
         setWorkers(event.target.value);
+        updateShift(shift.id, "workers", Number(workers));
     }
 
     return (
