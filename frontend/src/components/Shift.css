@@ -8,6 +8,15 @@
 .shift-container {
   display: flex;
   flex-direction: column;
+  animation: initialize 0.3s cubic-bezier(0, 1.24, 0.91, 0.96);
+}
+
+@keyframes initialize {
+  from {
+    transform: scale(0.5);
+  } to {
+    transform: scale(1);
+  }
 }
 
 .shift-schedule-container {
