@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   animation: initialize 0.3s cubic-bezier(0, 1.24, 0.91, 0.96);
+  transition: background-color 0.2s ease-out;
 }
 
 @keyframes initialize {
@@ -16,6 +17,10 @@
   } to {
     transform: scale(1);
   }
+}
+
+.day-container:hover {
+  background-color: #17866c;
 }
 
 .day-body {
