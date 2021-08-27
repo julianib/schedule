@@ -35,7 +35,13 @@ export default function CreateSchedule() {
     fetch("http://localhost:5000/sendDays", {
       method: "POST",
       body: JSON.stringify(days),
-    });
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
 
   return (

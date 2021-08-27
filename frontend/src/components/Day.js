@@ -56,26 +56,25 @@ export default function Day({ day, updateDay, deleteDay }) {
   return (
     <>
       <div className="day-container">
-        <div style={{ display: "flex", justifyContent: "space-between", margin: "0 1.3rem 0 1.3rem" }}>
-          <h2
-            className="title"
-          >
-            Day {day.id + 1}
-          </h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            margin: "0 1.3rem 0 1.3rem",
+          }}
+        >
+          <h2 className="title">Day {day.id + 1}</h2>
           <div>
-          <button
-            onClick={saveDay}
-            className="button"
-          >
-            Save
-          </button>
-          <button
-            style={{ marginLeft: "1rem",  }}
-            onClick={() => deleteDay(day.id)}
-            className="button"
-          >
-            Delete
-          </button>
+            <button onClick={saveDay} className="button">
+              Save
+            </button>
+            <button
+              style={{ marginLeft: "1rem" }}
+              onClick={() => deleteDay(day.id)}
+              className="button"
+            >
+              Delete
+            </button>
           </div>
         </div>
         <div className="day-body">

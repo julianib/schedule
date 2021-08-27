@@ -14,7 +14,8 @@
 @keyframes initialize {
   from {
     transform: scale(0.5);
-  } to {
+  }
+  to {
     transform: scale(1);
   }
 }
