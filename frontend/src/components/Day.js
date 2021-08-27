@@ -60,7 +60,7 @@ export default function Day({ day, updateDay }) {
           <h2
             className="title"
           >
-            Day #{day.id + 1}
+            Day {day.id + 1}
           </h2>
           <button
             onClick={saveDay}

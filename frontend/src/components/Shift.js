@@ -25,7 +25,7 @@ export default function Shift({ shift, updateShift }) {
   return (
     <div className="shift-worker-container">
       <div className="shift-container">
-        <h2 className="title">Shift</h2>
+        <h2 className="title">Shift {shift.id + 1}</h2>
         <div className="shift-schedule-container">
           <div className="shift-inputs">
             <h5 className="start-time-label">Start Time</h5>
