@@ -1,0 +1,9 @@
+.app-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.app-container > *:nth-child(1) {
+    flex-grow: 1;
+}
