@@ -5,16 +5,23 @@ import Day from "./Day";
 import "./CreateSchedule.css";
 
 export default function CreateSchedule() {
+  const [dayIds, setDayIds] = useState(0);
   const [days, setDays] = useState([]);
 
   function addDay() {
     const newDay = {
-      id: days.length,
+      id: dayIds, // dayIds are incremented, prefer not to use `days.length`
       date: new Date().getTime(),
       shifts: [],
     };
 
     setDays([...days, newDay]);
+    setDayIds(previousValue => previousValue + 1);
+  }
+
+  function deleteDay(dayId) {
+    const updatedDays = days.filter(day => day.id !== dayId);
+    setDays(updatedDays);
   }
 
   // This function is passed to the Day component
@@ -35,7 +42,7 @@ export default function CreateSchedule() {
     <div className="create-schedule-contaoner">
       <div>
         {days.map((day, index) => (
-          <Day key={index} day={day} updateDay={updateDay} />
+          <Day key={index} day={day} updateDay={updateDay} deleteDay={deleteDay}/>
         ))}
       </div>
       <div>
