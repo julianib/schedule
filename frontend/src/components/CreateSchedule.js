@@ -32,7 +32,7 @@ export default function CreateSchedule() {
   }
 
   return (
-    <div class="create-schedule-contaoner">
+    <div className="create-schedule-contaoner">
       <div>
         {days.map((day, index) => (
           <Day key={index} day={day} updateDay={updateDay} />
