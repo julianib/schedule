@@ -91,13 +91,13 @@ export default function Day({ day, updateDay, deleteDay }) {
         </div>
         <p
           style={{
-            color: "#09bb91",
+            color: "rgb(31 212 169)",
             fontSize: "0.8rem",
             marginLeft: "1.2rem",
             marginBottom: "1.2rem"
           }}
         >
-          {unsavedChanges ? "You have unsaved changes" : null}
+          {unsavedChanges ? "You have unsaved changes*" : null}
         </p>
       </div>
     </>
