@@ -37,20 +37,12 @@ export default function Day({ day, updateDay, deleteDay }) {
     setUnsavedChanges(false);
   };
 
-  // This function will get called everytime a shift is updated on a day
-  // (yes, I know, it's bad but this works @todo)
   function updateShift(updatedShiftId, key, value) {
-    // First find the shift to update by its id
-    const shiftToUpdate = shifts.find(shift => shift.id === updatedShiftId);
-
-    // Get filter to update
-    shiftToUpdate[key] = value;
-
-    // Then filter old shift from current shifts and then update with updated shift (shiftToUpdate)
-    const shiftsToUpdate = shifts.filter(
-      (shift) => shift.id !== updatedShiftId
+    setShifts(
+      shifts.map((shift) =>
+        shift.id === updatedShiftId ? { ...shift, [key]: value } : shift
+      )
     );
-    setShifts([...shiftsToUpdate, shiftToUpdate]);
     setUnsavedChanges(true);
   }
 
@@ -94,7 +86,7 @@ export default function Day({ day, updateDay, deleteDay }) {
             color: "rgb(31 212 169)",
             fontSize: "0.8rem",
             marginLeft: "1.2rem",
-            marginBottom: "1.2rem"
+            marginBottom: "1.2rem",
           }}
         >
           {unsavedChanges ? "You have unsaved changes*" : null}
