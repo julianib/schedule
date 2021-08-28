@@ -12,6 +12,7 @@ export default function Day({ day, updateDay, deleteDay }) {
   const updateDate = (event) => {
     const dateValue = event.target.value;
     setDate(new Date(dateValue).getTime());
+    setUnsavedChanges(true);
   };
 
   const addShift = () => {
