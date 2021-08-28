@@ -19,7 +19,7 @@ export default function Shift({ shift, updateShift }) {
 
   const handleWorkers = (event) => {
     setWorkers(event.target.value);
-    updateShift(shift.id, "workers", Number(workers));
+    updateShift(shift.id, "workers", Number(event.target.value));
   };
 
   return (
