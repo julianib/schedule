@@ -18,7 +18,11 @@ if the host wants to edit the schedule later (add more days, shifts or worker na
 
 @app.route('/sendDays', methods=["POST"])
 async def send_days(request):
-    print(request.body)
+    data = json.loads(request.body.decode("utf-8"))
+
+    return sanic_json({
+        "received": True
+    })
 
 """
 create_schedule packet:
