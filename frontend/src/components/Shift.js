@@ -31,14 +31,14 @@ export default function Shift({ shift, updateShift }) {
             <h5 className="start-time-label">Start Time</h5>
             <input
               className="input"
-              type="text"
+              type="time"
               value={startTime}
               onChange={handleStartTime}
             />
             <h5 className="end-time-label">End Time</h5>
             <input
               className="input"
-              type="text"
+              type="time"
               value={endTime}
               onChange={handleEndTime}
             />
