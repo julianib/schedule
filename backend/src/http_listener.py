@@ -16,7 +16,7 @@ if the host wants to edit the schedule later (add more days, shifts or worker na
 """
 
 
-@app.route('/sendDays', methods=["POST"])
+@app.route("/submit_schedule", methods=["POST"])
 async def send_days(request):
     data = json.loads(request.body.decode("utf-8"))
 
