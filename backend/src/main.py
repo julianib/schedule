@@ -2,7 +2,7 @@ import json
 from sanic import Sanic
 from sanic.response import json as sanic_json
 
-from sanic_cors import CORS, cross_origin
+from sanic_cors import CORS
 
 app = Sanic(name="scheduler")
 CORS(app)
@@ -16,9 +16,10 @@ if the host wants to edit the schedule later (add more days, shifts or worker na
 """
 
 
-@app.route("/submit_schedule", methods=["POST"])
+@app.route("/schedule", methods=["POST"])
 async def send_days(request):
     data = json.loads(request.body.decode("utf-8"))
+    print(json.dumps(data, indent=2, sort_keys=True))
 
     return sanic_json({
         "received": True

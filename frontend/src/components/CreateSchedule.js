@@ -7,12 +7,13 @@ import "./CreateSchedule.css";
 
 export default function CreateSchedule() {
   const [dayIds, setDayIds] = useState(0);
+  // days REALLY needs to be global context variable
   const [days, setDays] = useState([]);
 
   function addDay() {
     const newDay = {
       id: dayIds, // dayIds are incremented, prefer not to use `days.length`
-      date: new Date().getTime(),
+      date: 0,
       shifts: [],
     };
 
@@ -32,11 +33,16 @@ export default function CreateSchedule() {
     setDays([...updatedDays, updatedDay]);
   }
 
-  function sendDays() {
-    console.log(days);
-    fetch("http://localhost:5000/sendDays", {
+  function submitSchedule() {
+    const body = {
+      name: "SampleText",
+      workers: ["worker one", "worker two", "worker three"],
+      days: days,
+    };
+    console.log(body);
+    fetch("http://localhost:5000/schedule", {
       method: "POST",
-      body: JSON.stringify(days),
+      body: JSON.stringify(body),
     })
       .then((response) => response.json())
       .then((data) => console.log(data));
@@ -66,9 +72,9 @@ export default function CreateSchedule() {
           <button
             style={{ marginLeft: "0.5rem" }}
             className="button"
-            onClick={sendDays}
+            onClick={submitSchedule}
           >
-            Send days
+            Submit schedule
           </button>
         </div>
       </div>

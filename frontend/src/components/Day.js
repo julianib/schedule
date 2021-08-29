@@ -59,9 +59,12 @@ export default function Day({ day, updateDay, deleteDay }) {
         >
           <h2 className="title">Day {day.id + 1}</h2>
           <div>
-            <button onClick={saveDay} className="button">
-              Save
-            </button>
+            {unsavedChanges ? (
+              <button onClick={saveDay} className="button">
+                Save
+              </button>
+            ) : null}
+
             <button
               style={{ marginLeft: "1rem" }}
               onClick={() => deleteDay(day.id)}

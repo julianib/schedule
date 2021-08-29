@@ -3,8 +3,8 @@ import { useState } from "react";
 import "./Shift.css";
 
 export default function Shift({ shift, updateShift }) {
-  const [startTime, setStartTime] = useState(0);
-  const [endTime, setEndTime] = useState(0);
+  const [startTime, setStartTime] = useState("00:00");
+  const [endTime, setEndTime] = useState("01:00");
   const [workers, setWorkers] = useState(1);
 
   const handleStartTime = (event) => {
@@ -32,6 +32,7 @@ export default function Shift({ shift, updateShift }) {
             <input
               className="input"
               type="time"
+              step="300"
               value={startTime}
               onChange={handleStartTime}
             />
@@ -39,6 +40,7 @@ export default function Shift({ shift, updateShift }) {
             <input
               className="input"
               type="time"
+              step="300"
               value={endTime}
               onChange={handleEndTime}
             />
