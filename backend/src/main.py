@@ -1,6 +1,6 @@
 import json
 from sanic import Sanic
-from sanic.response import json as sanic_json
+from sanic import response
 
 from sanic_cors import CORS
 
@@ -21,9 +21,10 @@ async def send_days(request):
     data = json.loads(request.body.decode("utf-8"))
     print(json.dumps(data, indent=2, sort_keys=True))
 
-    return sanic_json({
-        "received": True
-    })
+    return response.json(
+        { "received": True }, 
+        status=200
+    )
 
 """
 create_schedule packet:
