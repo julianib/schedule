@@ -9,15 +9,19 @@ export default function CreateSchedule() {
   const [dayIds, setDayIds] = useState(0);
   // days REALLY needs to be global context variable
   const [days, setDays] = useState([]);
+  
+  const [schedulerResponse, setSchedulerResponse] = useState("");
 
   function addDay() {
-    const newDay = {
-      id: dayIds, // dayIds are incremented, prefer not to use `days.length`
-      date: 0,
-      shifts: [],
-    };
 
-    setDays([...days, newDay]);
+    setDays([...days, 
+      {
+        id: dayIds, // dayIds are incremented, prefer not to use `days.length`
+        date: 0,
+        shifts: []
+      }
+    ]);
+    
     setDayIds((previousValue) => previousValue + 1);
   }
 
@@ -45,7 +49,7 @@ export default function CreateSchedule() {
       body: JSON.stringify(body),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => setSchedulerResponse(data));
   }
 
   return (
